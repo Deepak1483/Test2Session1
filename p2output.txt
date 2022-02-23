@@ -1,1 +1,95 @@
+ enter the cordinates of the three sides of a triangle 
+1
+1
+1
+1
+2
+3
+the given coordinates doesn't represent a triangle
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0xab6: file p2original.c, line 40.
+(gdb) r
+Starting program: /home/runner/Test2Session1/a.out 
+warning: Error disabling address space randomization: Operation not permitted
 
+Breakpoint 1, main () at p2original.c:40
+warning: Source file is more recent than executable.
+40  {
+(gdb) n
+43    input_triangle( &x1,&y1,&x2,&y2,&x3,&y3);
+(gdb) s
+input_triangle (x1=0x7fff9eae33bc, y1=0x7fff9eae33c0, 
+    x2=0x7fff9eae33c4, y2=0x7fff9eae33c8, x3=0x7fff9eae33cc, 
+    y3=0x7fff9eae33d0) at p2original.c:5
+5     printf(" enter the cordinates of the three sides of a triangle \n");
+(gdb) 4
+Undefined command: "4".  Try "help".
+(gdb) n
+ enter the cordinates of the three sides of a triangle 
+6     scanf("%f %f %f %f %f %f",x1,y1,x2,y2,x3,y3);
+(gdb) n
+n
+7     }
+(gdb) n
+main () at p2original.c:44
+44    istriangle=is_trinagle(x1, y1, x2, y2, x3, y3);
+(gdb) s
+is_trinagle (x1=0, y1=1.66211811e+35, x2=3.07991389e-41, 
+    y2=1.66187726e+35, x3=3.07991389e-41, y3=-1.84447835e-20)
+    at p2original.c:11
+11    float dis1=sqrt(pow(x2-x1,2)+pow(y2-y1,2));
+(gdb) n
+12    float dis2=sqrt(pow(x3-x2,2)+pow(y3-y2,2));
+(gdb) n
+13    float dis3=sqrt(pow(x3-x1,2)+pow(y3-y1,2));
+(gdb) n
+14   if(x1!=x2||y1!=y2&&x1!=x3||y1!=y3&&x2!=x3||y2!=y3)
+(gdb) n
+16   res=1;   
+(gdb) n
+30     return res;
+(gdb) n
+31     }
+(gdb) n
+main () at p2original.c:45
+45    output(x1,  y1,  x2,  y2, x3,  y3,  istriangle);
+(gdb) s
+output (x1=0, y1=1.66211811e+35, x2=3.07991389e-41, y2=1.66187726e+35, 
+    x3=3.07991389e-41, y3=-1.84447835e-20, istriangle=1)
+    at p2original.c:34
+34    if(istriangle==0)
+(gdb) n
+36    else if(istriangle==1)
+(gdb) n
+37    printf("the given coordinates doesn't represent a triangle\n");
+(gdb) n
+the given coordinates doesn't represent a triangle
+38      }
+(gdb) n
+main () at p2original.c:46
+46  }(gdb) n
+__libc_start_main (main=0x55db7a000aae <main>, argc=1, 
+    argv=0x7fff9eae34c8, init=<optimized out>, fini=<optimized out>, 
+    rtld_fini=<optimized out>, stack_end=0x7fff9eae34b8)
+    at ../csu/libc-start.c:344
+344 ../csu/libc-start.c: No such file or directory.
+(gdb) c
+Continuing.
+[Inferior 1 (process 95) exited normally]
+(gdb) 
